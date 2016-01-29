@@ -1,7 +1,11 @@
 var express = require("express");
 var morgan = require('morgan');
-var swig = require('swig');
+//var swig = require('swig');
 var app = express();
+app.engine('html', require('swig').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views/');
+
 
 app.use(morgan('dev'));
 
@@ -18,9 +22,9 @@ app.get('/tacos/', function(req, res, next) {
 		people: [ { name: 'Taco Stand'}, {name: 'another'} ]
 	};
 	console.log('You are here')
-	swig.renderFile(__dirname + '/views/index.html', locals, function(err, output) {
+	app.render('index', locals, function(err, output) {
 		console.log(err)
-		res.send(output)
+		res.end(output)
 	})
 
 
