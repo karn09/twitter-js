@@ -13,18 +13,17 @@ app.get('/special/', function(req, res, next) {
 });
 
 app.get('/tacos/', function(req, res, next) {
-	res.send(swig.render({
+	var locals = {
+		title: 'Tacos!!!',
+		people: [ { name: 'Taco Stand'}, {name: 'another'} ]
+	};
+	console.log('You are here')
+	swig.renderFile(__dirname + '/views/index.html', locals, function(err, output) {
+		console.log(err)
+		res.send(output)
+	})
 
-	}, {
-		locals: {
-			title: 'Tacos!!!',
-			people: {
-				name: 'Taco Stand'
-			}
 
-		},
-		filename: '/views/index.html'
-	}))
 });
 
 app.use('/', function(req, res, next) {
