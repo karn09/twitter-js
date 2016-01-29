@@ -5,7 +5,7 @@ var app = express();
 
 app.use(morgan('dev'));
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);
 
 app.get('/special/', function(req, res, next) {
     console.log('You\'re special');
