@@ -7,7 +7,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views/');
 app.set('cache', false);
-//swig.setDefaults({cache: false})
+swig.setDefaults({cache: false})
 app.use(morgan('dev'));
 
 app.listen(process.env.PORT || 3000);
