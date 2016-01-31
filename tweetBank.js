@@ -2,10 +2,15 @@ var _ = require('lodash');
 
 var data = [];
 
-function add(name, text) {
+function add(name, text, id) {
+	name = name.split(' ');
+	var firstName = name[0];
+	var lastName = name[1];
 	data.push({
-		name: name,
-		text: text
+		name: firstName + ' ' + lastName,
+		firstName: firstName,
+		text: text,
+		id: id
 	});
 }
 
@@ -41,11 +46,11 @@ var getFakeTweet = function() {
 
 
 for (var i = 0; i < 10; i++) {
-  module.exports.add( getFakeName(), getFakeTweet() );
+	module.exports.add(getFakeName(), getFakeTweet(), i);
 }
 
 
 // module.exports.add('John Nieves', "Woohoo")
 // module.exports.add('Who this', "what")
-console.log(data);
-console.log(module.exports.find({'name':'Nimit'}));
+// console.log(data);
+// console.log(module.exports.find({'id':1}));

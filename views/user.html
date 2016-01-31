@@ -6,24 +6,12 @@
   </div>
   <div class="row">
     <div class="col-md-2">
-      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
-      <b>{{ user }}</b><br>
-      100 followers
+      <img src="http://lorempixel.com/48/48"><br>
+      <b>{{ name }}</b><br>
+      150 followers
     </div>
     <div class="col-md-10">
       <h3 class="title"><b>All Tweets</b></h3>
-      {# display post tweet here #}
-      {% if showForm %}
-        <form action="/tweets" method="POST">
-          <label for="name_field">Name:</label>
-          <input name="name" value:"{{ user }}" type="text" id="name_field" />
-
-          <label for="text_field">Text:</label>
-          <input name="text" type="text" id="text_field" style="width: 350px;" />
-
-          <input type="submit" value="Submit" />
-        </form>
-      {% endif %}
       <!-- display tweets here -->
       {% for tweet in tweets %}
           <div class="tweetbox">
@@ -35,6 +23,8 @@
             </div>
           </div>
       {% endfor %}
+
     </div>
   </div>
+
 {% endblock %}

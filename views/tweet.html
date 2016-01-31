@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="page-header">
-    <h1>Welcome to {{title}}!</h1>
+    <h1>{{title}}</h1>
   </div>
   <div class="row">
     <div class="col-md-2">
@@ -11,19 +11,7 @@
       100 followers
     </div>
     <div class="col-md-10">
-      <h3 class="title"><b>All Tweets</b></h3>
-      {# display post tweet here #}
-      {% if showForm %}
-        <form action="/tweets" method="POST">
-          <label for="name_field">Name:</label>
-          <input name="name" value:"{{ user }}" type="text" id="name_field" />
-
-          <label for="text_field">Text:</label>
-          <input name="text" type="text" id="text_field" style="width: 350px;" />
-
-          <input type="submit" value="Submit" />
-        </form>
-      {% endif %}
+      <h3 class="title"><b>{{name}}, #{{id3}}</b></h3>
       <!-- display tweets here -->
       {% for tweet in tweets %}
           <div class="tweetbox">
@@ -35,6 +23,8 @@
             </div>
           </div>
       {% endfor %}
+
     </div>
   </div>
+
 {% endblock %}
