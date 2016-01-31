@@ -27,12 +27,21 @@ var tweetBank = require('../tweetBank');
 // 	});
 // });
 
+router.get('/users/:name', function(req, res) {
+	var tweets = tweetBank;
+	res.render('index', {
+		title: 'Twitter.js',
+		name: 'nothing yet',
+		tweets: tweets
+	});
+});
+
 router.get('/', function(req, res) {
 	var tweets = tweetBank.list();
-	console.log(tweets[0]);
+	//console.log(tweets[0]);
 	res.render('index', {
-		title: 'Twitteer.js',
-		name: tweets[0].name,
+		title: 'Twitter.js',
+		name: "John",
 		tweets: tweets
 	});
 });

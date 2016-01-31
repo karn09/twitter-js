@@ -47,5 +47,5 @@ for (var i = 0; i < 10; i++) {
 
 // module.exports.add('John Nieves', "Woohoo")
 // module.exports.add('Who this', "what")
-// console.log(data)
-// console.log(module.exports.find({'name':'Who this'}));
+console.log(data);
+console.log(module.exports.find({'name':'Nimit'}));
