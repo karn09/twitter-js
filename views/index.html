@@ -10,7 +10,7 @@
       <b>{{ user }}</b><br>
       100 followers
     </div>
-    <div class="col-md-10">
+    <div id="tweets" class="col-md-10">
       <h3 class="title"><b>All Tweets</b></h3>
       {# display post tweet here #}
       {% if showForm %}
@@ -24,9 +24,10 @@
           <input type="submit" value="Submit" />
         </form>
       {% endif %}
+
       <!-- display tweets here -->
       {% for tweet in tweets %}
-          <div class="tweetbox">
+          <div class="tweetbox" >
             <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg">
             <div class="content">
               <b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b><br>

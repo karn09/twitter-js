@@ -46,6 +46,15 @@ module.exports = function(io) {
 	var tweetBank = require('../tweetBank');
 	var currentUser = "John Nieves";
 
+	io.sockets.on('tweet', function(data) {
+		console.log(data);
+	});
+	io.sockets.on('connect', function(data) {
+		console.log("Someone connected");
+	});
+	io.sockets.on('disconnect', function(data) {
+		console.log("Someone disconnected");
+	});
 	router.use(bodyParser.urlencoded({
 		extended: false
 	}));
@@ -54,6 +63,12 @@ module.exports = function(io) {
 		var name = req.body.name;
 		var text = req.body.text;
 		tweetBank.add(name, text);
+		io.sockets.emit('new_tweet', {
+			name: name,
+			text: text
+		});
+
+		// io.sockets.emit('tweet', {name: name, text: text});
 		res.redirect('/');
 	});
 
@@ -78,7 +93,6 @@ module.exports = function(io) {
 		var tweets = tweetBank.find({
 			name: name
 		});
-		// console.log(tweets)
 		res.render('user', {
 			title: 'Twitter.js - Posts by ' + name,
 			name: name,
@@ -89,8 +103,6 @@ module.exports = function(io) {
 
 	router.get('/', function(req, res) {
 		var tweets = tweetBank.list();
-		//console.log(tweets[0]);
-		console.log('test');
 		res.render('index', {
 			title: 'Twitter.js',
 			user: currentUser,

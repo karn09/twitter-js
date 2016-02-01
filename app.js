@@ -22,6 +22,10 @@ var io = socketio.listen(server); // attach io to server
 
 app.use('/', routes(io)); // set io routes
 
+server.on('error', function(err) {
+	console.error(err.message);
+})
+
 // app.get('/tweets/*', function(req, res, next) {
 // 	if (res.statusCode === 200) {
 // 		console.log(req.uri);
