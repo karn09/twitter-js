@@ -1,9 +1,10 @@
 var _ = require('lodash');
 
 var data = [];
+var counter = 1;
 
 function add (name, text) {
-  data.push({ name: name, text: text });
+  data.push({ name: name, text: text, id: counter++ });
 }
 
 function list () {
@@ -33,5 +34,13 @@ var getFakeTweet = function() {
 };
 
 for (var i = 0; i < 10; i++) {
-  module.exports.add( getFakeName(), getFakeTweet() );
+  add( getFakeName(), getFakeTweet() );
 }
+
+//var nameParam = 'Shanna';
+// var found = find(function(obj) {
+// 	return obj.name.indexOf(nameParam) !== -1;
+// });
+
+var found = find({id: 1});
+console.log(found);
