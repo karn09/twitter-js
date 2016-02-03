@@ -4,7 +4,8 @@ var data = [];
 var counter = 1;
 
 function add (name, text) {
-  data.push({ name: name, text: text, id: counter++ });
+  data.push({ name: name, text: text, id: counter });
+  return counter++;
 }
 
 function list () {
@@ -42,5 +43,5 @@ for (var i = 0; i < 10; i++) {
 // 	return obj.name.indexOf(nameParam) !== -1;
 // });
 
-var found = find({id: 1});
-console.log(found);
+// var found = find({id: 1});
+// console.log(found);
